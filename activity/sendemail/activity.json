@@ -1,6 +1,6 @@
 {
     "name": "sendemail",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "type": "flogo:activity",
     "description": "activity description",
     "author": "Your Name <you.name@example.org>",
