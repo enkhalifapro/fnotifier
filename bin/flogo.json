@@ -1,0 +1,66 @@
+{
+    "name": "notifier",
+    "type": "flogo:app",
+    "version": "0.0.1",
+    "description": "My flogo application description",
+    "triggers": [{
+        "id": "rest_server",
+        "name": "REST Server",
+        "description": "Receive http message",
+        "ref": "github.com/TIBCOSoftware/flogo-contrib/trigger/rest",
+        "settings": {
+            "port": "9090"
+        },
+        "handlers": [{
+            "actionId": "send_email",
+            "actionMappings": {
+                "input": [{
+                    "mapTo": "subject",
+                    "type": 1,
+                    "value": "pathParams.subject"
+                }],
+                "output": [{
+                    "mapTo": "data",
+                    "type": 1,
+                    "value": "result"
+                }]
+            },
+            "settings": {
+                "method": "GET",
+                "path": "/send/:subject"
+            }
+        }]
+    }],
+    "actions": [{
+        "id": "send_email",
+        "name": "send email",
+        "ref": "github.com/TIBCOSoftware/flogo-contrib/action/flow",
+        "data": {
+            "flow": {
+                "name": "send email",
+                "attributes": [],
+                "rootTask": {
+                    "id": 1,
+                    "type": 1,
+                    "tasks": [{
+                        "id": 2,
+                        "type": 1,
+                        "activityRef": "github.com/enkhalifapro/fnotifier/activity/sendemail",
+                        "name": "sendEmail",
+                        "metadata": {
+                            "inputs": [{
+                                "name": "subject",
+                                "type": "string"
+                            }],
+                            "output": [{
+                                "name": "result",
+                                "type": "string"
+                            }]
+                        }
+                    }],
+                    "links": []
+                }
+            }
+        }
+    }]
+}

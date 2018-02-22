@@ -21,6 +21,12 @@
 
 [[projects]]
   branch = "master"
+  name = "github.com/enkhalifapro/fnotifier"
+  packages = ["activity/sendemail"]
+  revision = "5ac7b240e9f601b22fc9ce99d1d81aef2f5d342b"
+
+[[projects]]
+  branch = "master"
   name = "github.com/japm/goScript"
   packages = ["."]
   revision = "caab90145b05376536bbab332312f4812123e197"
@@ -46,6 +52,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "bfa365c2fe53549890ae19d8c3ebe1ba5f587ec146054e0dbb4f9d2a08c29464"
+  inputs-digest = "ae4f951e30aa5be7852f46f40f98041dcf1c973a8482f82de429b555242d3aaf"
   solver-name = "gps-cdcl"
   solver-version = 1
